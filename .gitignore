@@ -9,6 +9,9 @@
 # Sublime Text
 sftp-config.json
 
+#VSCode
+.vscode/
+
 # WordPress
 wp-config.php
 *.sql
