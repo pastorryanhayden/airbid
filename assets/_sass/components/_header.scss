@@ -1,0 +1,23 @@
+header{
+	text-align: center;
+	height: 100vh;
+	padding: 4vh 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-around;
+	> *{
+		width: 100%;
+	}
+	> p{
+		font-weight: 300;
+		font-size: 1.5em;
+	}
+
+	span{
+		display: block;
+		font-size: 1rem;
+		strong{
+			display: block;
+		}
+	}
+}

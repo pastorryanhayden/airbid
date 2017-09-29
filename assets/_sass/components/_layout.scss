@@ -1,0 +1,29 @@
+$padding-side: 3em;
+$width: 90%;
+$max-width: 800px;
+body{
+	background-image: url("../images/background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center center;
+}
+.wrapper{
+	width: $width;
+	max-width: $max-width;
+	margin: 0 auto;
+	& > div{
+		background-color: rgba($white, 0.85);
+		padding: 0 $padding-side 3em;
+		margin: 0 0 6em;
+
+		section:nth-child(2){
+			padding-top: 8em;
+		}
+	}
+}
+section{
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 1em;
+}

@@ -1,0 +1,36 @@
+nav{
+	position: absolute;
+	width: $width;
+	max-width: $max-width;
+	margin: 0 0 2em (-$padding-side);
+	padding: 0 $padding-side;
+	&.fixed{
+		position: fixed;
+		top: 0;
+		background-color: rgba($white, 0.7);
+	}
+	ul{
+		display: flex;
+		list-style: none;
+		padding: 0;
+	}
+	li{
+		width: 20%;
+		text-align: center;
+	}
+	a{
+		display: block;
+		padding: 1em 0 0.5em; 
+		height: 100%;
+		text-transform: uppercase;
+		font-weight: 700;
+		text-decoration: none;
+		color: $dark;
+		&:hover,
+		&.active{
+			color: $green;
+			border-bottom: 2px solid $green;
+			margin-bottom: -2px;
+		}
+	}
+}

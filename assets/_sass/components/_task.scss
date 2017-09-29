@@ -1,0 +1,42 @@
+.basedPrices{
+	max-width: 400px;
+	margin: 2.5em 0 3em;
+	table{
+		width: 100%;
+	}
+	th,
+	td{
+		padding: 0.5em 1em;
+		border: 1px solid $dark;
+	}
+	th{
+		background-color: $dark;
+		color: $white;
+	}
+	p{
+		font-size: 0.8em;
+	}
+}
+.big-table{
+	width: 100%;
+	margin-bottom: 4em;
+	color: $gray;
+	tbody tr,
+	thead tr,{
+		border-bottom: 1px solid $gray;
+	}
+	th,
+	td{
+		padding: 1em 1.5em;
+	}
+	th:nth-child(3),
+	th:last-child,
+	td:nth-child(3),
+	td:last-child{
+		text-align: center;
+	}
+	tbody td:first-of-type{
+		color: $dark;
+		font-weight: 700;
+	}
+}

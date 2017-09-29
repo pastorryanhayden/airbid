@@ -1,5 +1,28 @@
 ---
 layout: default
 ---
+{% include sections/overview.html %}
 
-<p>Hi</p>
+{% include sections/about-us.html %}
+
+<section id="our-team">
+	<h2>Our Team</h2>
+	
+	<!-- .team -->
+	<div class="team">
+		{% include components/member.html %}
+		{% include components/member.html %}
+		{% include components/member.html %}
+	</div>
+	<!-- /.team -->
+</section>
+
+<section id="project-breakdown">
+	<h2>Project Breakdown</h2>
+	{% include components/task.html %}
+	{% include components/task.html %}
+</section>
+
+{% include sections/other-costs.html %}
+
+{% include sections/terms.html %}
