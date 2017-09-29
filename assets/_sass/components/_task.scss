@@ -40,3 +40,8 @@
 		font-weight: 700;
 	}
 }
+@media print {
+	.task{
+		height: 100vh;
+	}
+}

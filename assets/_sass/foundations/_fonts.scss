@@ -31,3 +31,8 @@ h4{
 	font-size: 1.3em;
 	font-style: italic;
 }
+@media print{
+	html{
+		font-size: 12px;
+	}
+}

@@ -5,8 +5,15 @@ header{
 	display: flex;
 	flex-wrap: wrap;
 	align-content: space-around;
+
+	.print-background{
+		display: none;
+		z-index: 0;
+	}
+	
 	> *{
 		width: 100%;
+		z-index: 1;
 	}
 	> p{
 		font-weight: 300;
@@ -19,5 +26,23 @@ header{
 		strong{
 			display: block;
 		}
+	}
+}
+
+@media print{
+	header{
+		font-size: 16px;
+		.print-background{
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		padding-bottom: 20vh;
+		padding-top: 20vh;
+		span img{
+			display: none;	
+		}
+		page-break-after: always;
 	}
 }

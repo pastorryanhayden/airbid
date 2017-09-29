@@ -1,0 +1,9 @@
+@media only print{
+	#overview,
+	#other-costs{
+		height: 100vh;
+	}
+	#our-team{
+		page-break-after: always;
+	}
+}
