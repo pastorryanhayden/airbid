@@ -5,6 +5,7 @@ body{
 	background-image: url("../images/background.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-attachment: initial;
 	background-attachment: fixed;
 	background-position: center center;
 }
@@ -18,7 +19,15 @@ body{
 		margin: 0 0 6em;
 
 		section:nth-child(2){
-			padding-top: 8em;
+			padding-top: 4em;
+		}
+	}
+}
+@include mobile{
+	.wrapper{
+		width: 100%;
+		& > div{
+			margin-bottom: 0;
 		}
 	}
 }

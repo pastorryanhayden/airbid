@@ -1,24 +1,51 @@
 nav{
 	position: absolute;
-	// position: sticky;
-	// top: 0;
 	width: $width;
 	max-width: $max-width;
 	margin: 0 0 2em (-$padding-side);
 	padding: 0 $padding-side;
+	@include mobile {
+		width: 100%;
+		&.show{
+			background-color: rgba($white, 0.9);
+			ul{
+				display: flex;
+			}
+		}
+	}
+	.hamburger{
+		display: none;
+		padding: 2em 0;
+		margin: 0 0 0 auto;
+		// width: 30px;
+		@include mobile {
+			display: block;
+		}
+	}
 	&.sticky{
 		position: fixed;
 		top: 0;
-		background-color: rgba($white, 0.7);
+		background-color: rgba($white, 0.9);
 	}
 	ul{
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
 		list-style: none;
 		padding: 0;
+		@include mobile{
+			display: none;
+			&.show{
+				display: flex;
+			}
+		}
 	}
 	li{
 		width: 20%;
 		text-align: center;
+		@include mobile{
+			width: 100%;
+		}
 	}
 	a{
 		display: block;

@@ -55,3 +55,13 @@ window.addEventListener('scroll', function() {
         }
     });
 });
+
+// hamburger
+var togleMenu = document.getElementById('togleMenu');
+// var menu = document.getElementById('menu');
+
+togleMenu.addEventListener('click', function(event) {
+    event.preventDefault();
+    navbar.classList.toggle('show');
+    togleMenu.classList.toggle('is-active');
+});
