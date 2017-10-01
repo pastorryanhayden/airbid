@@ -9,8 +9,9 @@ header{
 	.print-background{
 		display: none;
 		z-index: 0;
+
 	}
-	
+
 	> *{
 		width: 100%;
 		z-index: 1;
@@ -37,11 +38,13 @@ header{
 			position: absolute;
 			top: 0;
 			left: 0;
+			width: 8.5in;
+
 		}
 		padding-bottom: 20vh;
 		padding-top: 20vh;
 		span img{
-			display: none;	
+			display: none;
 		}
 		page-break-after: always;
 	}
