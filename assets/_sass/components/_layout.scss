@@ -9,6 +9,12 @@ body{
 	background-attachment: fixed;
 	background-position: center center;
 }
+.overflow-x{
+	overflow-x:auto;
+	@include print{
+		overflow-x: initial;
+	}
+}
 .wrapper{
 	width: $width;
 	max-width: $max-width;

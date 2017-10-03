@@ -2,6 +2,8 @@
 	#overview,
 	#other-costs{
 		height: 100vh;
+		page-break-after: always;
+		page-break-inside: avoid;
 	}
 	#our-team{
 		page-break-after: always;
