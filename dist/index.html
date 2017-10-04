@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title></title>
+  <meta name="description" content="Quick starter project for Jekyll including full setup for gulp, Sass, Autoprefixer, Bourbon/Neat/Bitters, Browserify, imagemin, Browsersync, PostCSS etc.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/">
+  <link rel="alternate" type="application/rss+xml" title="Challenge Program Furniture" href="/feed.xml">
+  <style>
+
+  </style>
+</head>
+  <body>
+    <main id="app" class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <header v-for="item in items">
+  	      <div class="print-background" alt="" style="background: url(/assets/images/background.jpg) no-repeat center center; background-size: cover;"></div>
+        	<h1>
+        		<img class="logo" src="/assets/images/logo-light.png" alt="Row & Table Solutions">
+        	</h1>
+          <p>{{ item['fields']['Main Heading'] }}</p>
+        	<span>
+        		<p>
+        			Bid for:
+        			<strong>{{ item['fields']['Client'] }}</strong>
+        			{{ item['fields']['Job ID'] }}
+        		</p>
+        		<img src="../assets/svg/chevrons-down.svg" alt="">
+        	</span>
+        </header>
+        <div id="content">
+          <nav id="navigation">
+          	<button id="togleMenu" class="hamburger hamburger--collapse" type="button">
+          		<span class="hamburger-box">
+          			<span class="hamburger-inner"></span>
+          		</span>
+          	</button>
+          	<ul id="menu">
+          		<li><a href="#overview">Overview</a></li>
+          		<li><a href="#about-us">About Us</a></li>
+          		<li><a href="#project-breakdown">Breakdown</a></li>
+          		<li><a href="#other-costs">Other Costs</a></li>
+          		<li><a href="#terms">Terms</a></li>
+          	</ul>
+          </nav>
+          <section v-for="item in items" id="overview">
+          	<h2>Overview</h2>
+            <p v-html="marked(item['fields']['Project Overview'])"></p>
+          </section>
+
+          <section v-for="item in items" id="about-us">
+          	<h2>About Us</h2>
+            <p v-html="marked(item['fields']['About Us'])">}</p>
+          </section>
+
+          <section id="our-team">
+          	<h2>Our Team</h2>
+
+          	<!-- .team -->
+          	<div class="team">
+          		<!-- member 1 -->
+              <div v-for="member in members">
+                <img :src="member['fields']['Photo'][0]['url']" alt="">
+              	<!-- <img :src="{{item['fields']['Photo']}}" alt=""> -->
+              	<h3>{{ member['fields']['Name'] }}</h3>
+              	<h4>{{ member['fields']['Title'] }}</h4>
+                <p v-html="marked(member['fields']['Description'])"></p>
+              </div>
+              <!-- /member 1 -->
+          	</div>
+          	<!-- /.team -->
+          </section>
+          <p style="page-break-after: always"></p>
+
+          <section id="project-breakdown">
+            <h2>Project Breakdown</h2>
+            <div id="projectInfo">
+              <article v-for="task in tasks" class="task">
+                <div>
+                  <h3>{{ task['fields']['Task/Feature'] }}</h3>
+                  <p v-html="marked(task['fields']['Description'])"></p>
+                </div>
+
+              	<!-- basedPrices -->
+              	<div class="basedPrices">
+              		<table>
+              			<tr>
+              				<th>Time & Material Estimate</th>
+              				<th>Value Based Price*</th>
+              			</tr>
+              			<tr>
+              				<td>${{ task['fields']['Total Costs'] }}</td>
+              				<td>${{ task['fields']['Value Cost'] }}</td>
+              			</tr>
+              		</table>
+              		<p>*Value based prices are locked in.  In other words, even if it takes us 30 more hours than the estimate to complete the agreed upon tasks, your price doesn’t change.  To protect against unforseen costs on our end, we offer this at 130% of our Time & Material Estimate</p>
+              	</div>
+                <!-- /basedPrices -->
+                <!-- sub-tasks -->
+                <h4>Sub-Tasks Estimate</h4>
+                <div class="overflow-x">
+                  <table class="big-table" style="page-break-inside: avoid">
+                    <thead>
+                      <tr>
+                        <th>Task</th>
+                        <th>Description</th>
+                        <th>Dev Hours</th>
+                        <th>Design Hours</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{ task['fields']['sub-task-name'] }}</td>
+                        <td>{{ task['fields']['sub-task-description'] }}</td>
+                        <td>{{ task['fields']['sub-task-dev-hours'] }}</td>
+                        <td>{{ task['fields']['sub-task-design-hours'] }}</td>
+                      </tr>
+                      <tfoot>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>27</td>
+                          <td>180</td>
+                        </tr>
+                      </tfoot>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /sub-tasks -->
+              </article>
+            </div>
+          </section>
+
+          <section id="other-costs">
+          	<h2>Other Costs</h2>
+          	<!-- table -->
+          	<div class="overflow-x">
+          		<table class="big-table">
+          			<thead>
+          				<tr>
+          					<th>Item</th>
+          					<th>Description</th>
+          					<th>Price</th>
+          					<th>Regularity</th>
+          				</tr>
+          			</thead>
+          			<tbody>
+          				<tr v-for="cost in otherCosts">
+          					<td>{{ cost['fields']['Heading'] }}</td>
+          					<td>{{ cost['fields']['Description'] }}</td>
+          					<td>${{ cost['fields']['Price'] }}</td>
+          					<td>{{ cost['fields']['Regularity'] }}</td>
+          				</tr>
+          			</tbody>
+          		</table>
+          	</div>
+          	<!-- /table -->
+          	<h3>Support</h3>
+          	<p>After project delivery support will be charged our standard hourly rate with a half-hour minimum.</p>
+          </section>
+
+          <section id="terms">
+          	<h2>Terms</h2>
+            <div v-for="term in terms" class="termSection">
+              <h3>{{ term['fields']['Title'] }}</h3>
+            	<p v-html="marked(term['fields']['Details'])"></p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer"></footer>
+
+    <script src="/assets/js/main.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script type="text/javascript">
+      var marked;
+      Vue.mixin({
+        methods: {
+          marked: function(input) {
+            return marked(input);
+          }
+        }
+      })
+      var app = new Vue({
+        el: '#app',
+        data: {
+          ////////INSERT API AND ID BELOW////////
+          app_id: "appm5ldz4pzdq6tlL",
+          app_key: "key9PgqGn0geXLkTu",
+          clientName: "",
+          items: [],
+          members: [],
+          tasks: [],
+          subTasks: [],
+          otherCosts: [],
+          terms: []
+        },
+        mounted: function(){
+         this.loadItems();
+         this.loadMembers();
+         this.loadTasks();
+         this.loadSubTasks();
+         this.loadOtherCosts();
+         this.loadTerms();
+        },
+        methods: {
+          loadItems: function(){
+            // Get /intro content
+            var self = this
+            app_id = this.app_id
+            app_key = this.app_key
+            this.items = []
+            axios.get("https://api.airtable.com/v0/" + app_id + "/Introduction",
+            {
+              headers: { Authorization: "Bearer " + app_key }
+            })
+            .then(function(response){ self.items = response.data.records })
+            .catch(function(error){ console.log(error)
+            })
+          },
+          loadMembers: function(){
+            // Get /Team content
+            var self = this
+            app_id = this.app_id
+            app_key = this.app_key
+            this.members = []
+            axios.get("https://api.airtable.com/v0/" + app_id + "/Team",
+            {
+              headers: { Authorization: "Bearer " + app_key }
+            })
+            .then(function(response){ self.members = response.data.records })
+            .catch(function(error){ console.log(error)
+            })
+          },
+          loadTasks: function(){
+            // Get /Tasks content
+            var self = this
+            app_id = this.app_id
+            app_key = this.app_key
+            this.tasks = []
+            axios.get("https://api.airtable.com/v0/" + app_id + "/Tasks",
+            {
+              headers: { Authorization: "Bearer " + app_key }
+            })
+            .then(function(response){ self.tasks = response.data.records })
+            .catch(function(error){ console.log(error)
+            })
+          },
+          loadSubTasks: function(){
+            // Get /Tasks content
+            var self = this
+            app_id = this.app_id
+            app_key = this.app_key
+            this.subTasks = []
+            axios.get("https://api.airtable.com/v0/" + app_id + "/Sub%20Tasks",
+            {
+              headers: { Authorization: "Bearer " + app_key }
+            })
+            .then(function(response){ self.subTasks = response.data.records })
+            .catch(function(error){ console.log(error)
+            })
+          },
+          loadOtherCosts: function(){
+            // Get /Tasks content
+            var self = this
+            app_id = this.app_id
+            app_key = this.app_key
+            this.otherCosts = []
+            axios.get("https://api.airtable.com/v0/" + app_id + "/Other%20Costs",
+            {
+              headers: { Authorization: "Bearer " + app_key }
+            })
+            .then(function(response){ self.otherCosts = response.data.records })
+            .catch(function(error){ console.log(error)
+            })
+          },
+          loadTerms: function(){
+            // Get /Tasks content
+            var self = this
+            app_id = this.app_id
+            app_key = this.app_key
+            this.terms = []
+            axios.get("https://api.airtable.com/v0/" + app_id + "/Terms",
+            {
+              headers: { Authorization: "Bearer " + app_key }
+            })
+            .then(function(response){ self.terms = response.data.records })
+            .catch(function(error){ console.log(error)
+            })
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
