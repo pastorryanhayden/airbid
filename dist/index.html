@@ -124,11 +124,11 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>{{ task['fields']['sub-task-name'] }}</td>
-                        <td>{{ task['fields']['sub-task-description'] }}</td>
-                        <td>{{ task['fields']['sub-task-dev-hours'] }}</td>
-                        <td>{{ task['fields']['sub-task-design-hours'] }}</td>
+                      <tr v-for="(item, index) in task['fields']['sub-task-name']">
+                        <td>{{ item }} {{index}}</td>
+                        <td>{{ task['fields']['sub-task-description'][index] }}</td>
+                        <td>{{ task['fields']['sub-task-dev-hours'][index] }}</td>
+                        <td>{{ task['fields']['sub-task-design-hours'][index] }}</td>
                       </tr>
                       <tfoot>
                         <tr>
